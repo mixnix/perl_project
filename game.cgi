@@ -29,7 +29,11 @@ if ( (($move eq "rock") && ($comp_move_string eq "scissors")) || (($move eq "pap
    $html_string = "You win";
 }elsif( (($move eq "scissors") && ($comp_move_string eq "rock")) || (($move eq "rock") && ($comp_move_string eq "paper")) || (($move eq "paper") && ($comp_move_string eq "scissors")) ){
    $html_string = "You lose";
-} 
+}elsif( (($move eq "scissors") && ($comp_move_string eq "scissors")) || (($move eq "rock") && ($comp_move_string eq "rock")) || (($move eq "paper") && ($comp_move_string eq "paper")) ){
+   $html_string = "It's a draw";
+ }
+
+ $html_string0 = "You picked $move and computer picked $comp_move_string.";
 
 #-------------
 # print HTML
@@ -41,9 +45,7 @@ print<<EOP;
 <head><title>Rock paper scissors game</title></head>
 <body>
 <hr><h1>Rock paper scissors game</h1><hr>
-$move
-$comp_move_string
-$html_string
+$html_string0 $html_string
 <p>
 
 EOP
