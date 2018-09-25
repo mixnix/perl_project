@@ -54,6 +54,8 @@ EOP
 print<<EOP;
 
 <hr>
+
+<input type="button" value="Back to Form" onClick="history.back()">
 </body>
 </html>
 
