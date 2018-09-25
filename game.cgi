@@ -29,7 +29,7 @@ if ( (($move eq "rock") && ($comp_move_string eq "scissors")) || (($move eq "pap
    $html_string = "You win";
 }elsif( (($move eq "scissors") && ($comp_move_string eq "rock")) || (($move eq "rock") && ($comp_move_string eq "paper")) || (($move eq "paper") && ($comp_move_string eq "scissors")) ){
    $html_string = "You lose";
-}elsif( 
+} 
 
 #-------------
 # print HTML
