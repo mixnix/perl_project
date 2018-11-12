@@ -21,8 +21,9 @@ foreach $line(@lines){
 }
 
 $cookie= cookie('random-name');
-($id_from_cookie, $num_from_cookie)=split / /,$cookie;
-if ($cookie && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
+($num_from_cookie, $id_from_cookie)=split / /,$cookie;
+if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
+
 print header();
 print start_html();
 print "you are already logged in";
