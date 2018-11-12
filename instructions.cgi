@@ -35,8 +35,8 @@ print "<a href='logout.cgi'>logout</a><br>";
 print "<a href='instructions.cgi'>instructions</a><br>";
 print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
-print "<h1>Main page</h1><br>";
-print "<p>Hello, this is rock paper scissors game</p>";
+print "<h1>Instructions</h1><br>";
+print "<p>Here are explanations how all of this is going to work</p>";
 }else{
 
 
