@@ -1,11 +1,13 @@
 #!/usr/bin/perl -w
 
-# Prompt for first name, last name and phone number.
-# - if missing input, display error message.
-# - otherwise, display confirmation message.
-
 use CGI qw(:standard -debug);
 use CGI::Carp qw(fatalsToBrowser);
+
+use utf8;
+use Encode;
+
+#firstly check if the guy is logged in, if he is then we dont do anything beside saying
+#him that he is logged in and showing button to go back to main page
 
 #load all cookie data to check if his  cookie is the right one
 $cookie_file = "cookie.txt";
@@ -23,12 +25,18 @@ foreach $line(@lines){
 $cookie= cookie('random-name');
 ($id_from_cookie, $num_from_cookie)=split / /,$cookie;
 if ($cookie && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
+
 print header();
 print start_html();
 print "you are already logged in";
 print "<br>";
 print "<a href='index.cgi'>main page</a>";
 }else{
+
+
+
+
+
 
 #load all ids to array
 #so later we can just check for zawieranie
@@ -40,29 +48,58 @@ close(INF);
 #print $lines[0];
 
 @all_ids = ();
+@all_passwords = ();
 
 
 $id = param("id");
 $password = param("password");
+$html_string = "";
 
 foreach $line(@lines){
   @words_in_line = split / /, $line;
-  push(@all_ids,@words_in_line[0]);
+  $temporary_password = $words_in_line[1];
+  chomp $temporary_password;
+  if ( $id eq $words_in_line[0] && $password eq $temporary_password){
+    $html_string = "id and pass and password are correct";
   }
-
-
-$html_string = "";
-if ( $id ~~ @all_ids ){
-$html_string = "$id already exists, go back and try again";
-}else{
-open(OUTF, ">>$file") || die("cant open $file for writing id there");
-print OUTF "$id $password\n";
-close(OUTF);
-$html_string = "Thank you for registration. Your account ($id) has been created.";
 }
 
 
-print header();
+#load all cookies from file
+$cookie_file = "cookie.txt";
+if (!-e $cookie_file){
+	print header();
+	print h2("$cookie_file doesn't exist.");
+	exit;
+}else{
+    open(IN,"$cookie_file") || die "cant read $cookie_file";
+	while(<IN>){
+       chomp;
+	   my($id_2,$num_2)=split/ /;
+	   $cookie_hash{$id_2}=$num_2;
+	}
+	close IN;
+}
+
+
+#create cookie
+$cookie_id = int(rand(1000000));
+$cookie_hash{$id}=$cookie_id;
+
+$cookie = cookie(
+	-name => "random-name",
+	-value => "$cookie_id $id",
+);
+
+#save cookie data to file
+open(OUT, ">$cookie_file") || die "cant write to $cookie_file";
+foreach $ida(sort keys %cookie_hash){
+   print OUT "$ida $cookie_hash{$ida}\n";
+}
+close OUT;
+
+#sent cookie to user's computer
+print header(-cookie=>$cookie,-charset=>'utf-8');
 
 print<<EOP; 
 
