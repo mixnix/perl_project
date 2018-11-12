@@ -30,8 +30,7 @@ print header();
 print start_html();
 print "you are already logged in";
 print "<br>";
-print "<a href='index.cgi'>main page</a>";
-<br>
+print "<a href='index.cgi'>main page</a><br>";
 print "<a href='logout.cgi'>logout</a>";
 }else{
 

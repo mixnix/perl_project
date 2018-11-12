@@ -17,7 +17,7 @@ close IN;
 chomp @lines;
 
 $cookie= cookie('random-name');
-($id_from_cookie, $num_from_cookie)=split / /,$cookie;
+($num_from_cookie, $id_from_cookie)=split / /,$cookie;
 
 #print "@lines";
 $html_string = "jestem html string";
@@ -25,7 +25,7 @@ $array_index = 0;
 foreach $line(@lines){
    ($id, $id_number)=split / /,$line,2;
    $cookie_hash{$id}=$id_number;
-   if($id_number == $id_from_cookie && $id == $num_from_cookie){
+   if($id_number == $num_from_cookie && $id == $id_from_cookie){
      $html_string = "znaleziono ciastko";
 	 last;
 
@@ -39,21 +39,20 @@ open(OUT, ">$cookie_file") || die "can write to $cookie_file";
 print OUT "@lines";
 close OUT;
 
-if ($cookie && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
-
-
 print header();
 print start_html();
+
+if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
+
+
 print "$html_string<br>";
-print "logging out successful ";
-print "$array_index @lines <br>";
-#print "$id_from_cookie $num_from_cookie<br>";
+print "logging out successful <br>";
+print "index array: $array_index linie wczytanie z cookies pliku juz po usunieciu: @lines <br>";
+print "id from cookie: $id_from_cookie num from cookie: $num_from_cookie<br>";
 print "<br>";
 print "<a href='index.cgi'>main page</a>";
 }else{
 
-print header();
-print start_html();
 print "error";
 print "<br>";
 print "<a href='index.cgi'>main page</a>";
