@@ -6,6 +6,25 @@ use CGI::Carp qw(fatalsToBrowser);
 use utf8;
 use Encode;
 
+sub calculate_move{
+  my($op_mov, $player_move) = @_;
+  print("ruch przeciwnika $op_mov ruch moj $player_move<br>");
+  if($op_mov eq $player_move){
+    return 0.5;
+  }elsif(($op_mov eq "r" && $player_move eq "s") || 
+  ($op_mov eq "p" && $player_move eq "r") ||
+  ($op_mov eq "s" && $player_move eq "p")){
+    return 0;
+  }elsif(($op_mov eq "s" && $player_move eq "r") || 
+  ($op_mov eq "r" && $player_move eq "p") ||
+  ($op_mov eq "p" && $player_move eq "s")){
+    return 1;
+  }else{
+    return 100;
+  }
+
+}
+
 #firstly check if the guy is logged in, if he is then we dont do anything beside saying
 #him that he is logged in and showing button to go back to main page
 
@@ -35,11 +54,69 @@ print "<a href='logout.cgi'>logout</a><br>";
 print "<a href='instructions.cgi'>instructions</a><br>";
 print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
-print "<h1>here you play vs picked strategy</h1><br>";
+print "<h1>here you see how you did vs strategy</h1><br>";
 $s_name = param("s_name");
 print "<p>strategy name: $s_name</p>";
 
+
+#loads all parameters
+#name, move1
+$strategy_name = param("s_name");
+$move1= param("move1");
+$move2= param("move2");
+$move3= param("move3");
+$move4= param("move4");
+$move5= param("move5");
+$move6= param("move6");
+$move7= param("move7");
+$move8= param("move8");
+$move9= param("move9");
+$move10= param("move10");
+
+#print them to check value for debugiing
+print("straegy name: $strategy_name<br>");
+print("move1: $move1<br>");
+print("move1: $move2<br>");
+print("move1: $move3<br>");
+print("move1: $move4<br>");
+print("move1: $move5<br>");
+print("move1: $move6<br>");
+print("move1: $move7<br>");
+print("move1: $move8<br>");
+print("move1: $move9<br>");
+
 #open file with strategies and loads all line
+$strategies_file = "simple_strategies.txt";
+
+open(INS, "$strategies_file") || die "cant read $strategies_file";
+@lines=<INS>;
+close INS;
+
+my $m1, $m2, $m3, $m4, $m5, $m6, $m7, $m8, $m9, $m10;
+foreach $line(@lines){
+  if(index($line, $strategy_name) != -1){
+    print("found strategy<br>");
+	chomp $line;
+    ($niepotrzebne, $m1, $m2, $m3, $m4, $m5, $m6, $m7, $m8, $m9, $m10)=split / /,$line,11;
+  }
+}
+print ("m1 k: $m1<br>");
+print ("m2 k: $m2<br>");
+print ("m3 k: $m3<br>");
+print ("oky, here i will calculate everything<br>");
+$total_points = 0;
+$total_points += calculate_move($m1, $move1);
+$total_points += calculate_move($m2, $move2);
+$total_points += calculate_move($m3, $move3);
+$total_points += calculate_move($m4, $move4);
+$total_points += calculate_move($m5, $move5);
+$total_points += calculate_move($m6, $move6);
+$total_points += calculate_move($m7, $move7);
+$total_points += calculate_move($m8, $move8);
+$total_points += calculate_move($m9, $move9);
+$total_points += calculate_move($m10, $move10);
+print("total points : $total_points");
+
 #for through all lines and check for containing of straegy name
 #when you find good line then use split to split it into 10 different arugments
 
@@ -50,58 +127,6 @@ print "<p>strategy name: $s_name</p>";
 #that shall be enough for today
 #after taht spend one day on implementing bootstrap and check how it looks
 #show it to professor on monday
-
-print("<form action='play_simple_strategy_confirm.cgi' method='post'>");
-print("Name<br>");
-print("<input type='text' name='s_name' value='$s_name' readonly><br>");
-print<<EOP;
-
-
-Move 1<br>
-<input type="radio" name="move1" value="r">Rock</input><br>
-<input type="radio" name="move1" value="p">Paper</input><br>
-<input type="radio" name="move1" value="s">Scissors</input><br>
-Move 2<br>
-<input type="radio" name="move2" value="r">Rock</input><br>
-<input type="radio" name="move2" value="p">Paper</input><br>
-<input type="radio" name="move2" value="s">Scissors</input><br>
-Move 3<br>
-<input type="radio" name="move3" value="r">Rock</input><br>
-<input type="radio" name="move3" value="p">Paper</input><br>
-<input type="radio" name="move3" value="s">Scissors</input><br>
-Move 4<br>
-<input type="radio" name="move4" value="r">Rock</input><br>
-<input type="radio" name="move4" value="p">Paper</input><br>
-<input type="radio" name="move4" value="s">Scissors</input><br>
-Move 5<br>
-<input type="radio" name="move5" value="r">Rock</input><br>
-<input type="radio" name="move5" value="p">Paper</input><br>
-<input type="radio" name="move5" value="s">Scissors</input><br>
-Move 6<br>
-<input type="radio" name="move6" value="r">Rock</input><br>
-<input type="radio" name="move6" value="p">Paper</input><br>
-<input type="radio" name="move6" value="s">Scissors</input><br>
-Move 7<br>
-<input type="radio" name="move7" value="r">Rock</input><br>
-<input type="radio" name="move7" value="p">Paper</input><br>
-<input type="radio" name="move7" value="s">Scissors</input><br>
-Move 8<br>
-<input type="radio" name="move8" value="r">Rock</input><br>
-<input type="radio" name="move8" value="p">Paper</input><br>
-<input type="radio" name="move8" value="s">Scissors</input><br>
-Move 9<br>
-<input type="radio" name="move9" value="r">Rock</input><br>
-<input type="radio" name="move9" value="p">Paper</input><br>
-<input type="radio" name="move9" value="s">Scissors</input><br>
-Move 10<br>
-<input type="radio" name="move10" value="r">Rock</input><br>
-<input type="radio" name="move10" value="p">Paper</input><br>
-<input type="radio" name="move10" value="s">Scissors</input><br>
-<input type="submit" value="submit">
-
-</form>
-
-EOP
 
 }else{
 

@@ -37,6 +37,20 @@ print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
 print "<h1>pick simple strategy</h1><br>";
 print "<p>here you can pick simple strategy that you want to play against</p>";
+$simple_strategies = "simple_strategies.txt";
+open(INS, "$simple_strategies") || die "cant read $simple_strategies";
+@s_lines=<INS>;
+close INS;
+print("linie z pliku stregiowego: @s_lines<br>");
+print("<form action='play_simple_strategy.cgi' method='post'>");
+foreach $line(@s_lines){
+   ($s_name, $the_rest)=split / /,$line,2;
+   print("<input type='radio' name='s_name' value='$s_name'>$s_name</input><br>");
+}
+print("<input type='submit' value='submit'>");
+
+print("</form>");
+
 }else{
 
 
