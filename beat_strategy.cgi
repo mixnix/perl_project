@@ -36,7 +36,8 @@ print "<a href='instructions.cgi'>instructions</a><br>";
 print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
 print "<h1>Beat strategy</h1><br>";
-print "<p>Hello, here you can beat strategies that other users created</p>";
+print "<p>Hello, here you can beat strategies that other users created</p><br>";
+print "<a href='pick_simple_strategy.cgi'>beat simple strategy</a><br>";
 }else{
 
 

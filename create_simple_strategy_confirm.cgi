@@ -35,9 +35,54 @@ print "<a href='logout.cgi'>logout</a><br>";
 print "<a href='instructions.cgi'>instructions</a><br>";
 print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
-print "<h1>Create strategy</h1><br>";
-print "<p>Here you can create strategies that other users will have to beat</p>";
-print "<a href='create_simple_strategy.cgi'>create simple strategy</a><br>";
+print "<h1>create simple strategy confirm</h1><br>";
+print "<p>here you can go back to main page after creating new strategy</p>";
+
+#loads all parameters
+#name, move1
+$strategy_name = param("name");
+$move1= param("move1");
+$move2= param("move2");
+$move3= param("move3");
+$move4= param("move4");
+$move5= param("move5");
+$move6= param("move6");
+$move7= param("move7");
+$move8= param("move8");
+$move9= param("move9");
+$move10=param("move10");
+
+#10 moves
+#print them to check value for debugiing
+print("straegy name: $strategy_name<br>");
+print("move1: $move1<br>");
+print("move1: $move2<br>");
+print("move1: $move3<br>");
+print("move1: $move4<br>");
+print("move1: $move5<br>");
+print("move1: $move6<br>");
+print("move1: $move7<br>");
+print("move1: $move8<br>");
+print("move1: $move9<br>");
+print("move1: $move10<br>");
+$line_to_file = $strategy_name . " " . $move1 . " " . $move2 . " " . $move3 . " " . $move4 . " " . $move5 . " " . $move6 . " " . $move7 . " " . $move8 . " " . $move9 . " " . $move10 . "\n";
+print("suma: $line_to_file sdf");
+#opens file that is gonna hold name at beginning of line and all lines
+
+$strategies_file = "simple_strategies.txt";
+open(STROUT, ">>$strategies_file") || die "cant open for appending $strategies_file";
+print STROUT "$line_to_file";
+close STROUT
+
+
+
+#pushes all parameters to one string variable, adds end of line character and appends to file
+
+#after writing this code for 1 move check manually if it works, after writing for 10 moves also check if it works
+#check it 2 times to check if new line character works
+
+
+
 }else{
 
 
