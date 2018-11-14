@@ -26,15 +26,48 @@ $cookie= cookie('random-name');
 ($num_from_cookie, $id_from_cookie)=split / /,$cookie;
 if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
 
-print header();
-print start_html();
-print "you are already logged in";
-print "<br>";
-print "<a href='index.cgi'>main page</a><br>";
-print "<a href='logout.cgi'>logout</a><br>";
-print "<a href='instructions.cgi'>instructions</a><br>";
-print "<a href='create_strategy.cgi'>create strategy</a><br>";
-print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
+print<<EOP;
+
+<!DOCTYPE html>
+<html>
+<head><title>Rock paper scissor</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Rock Paper Scissors</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.cgi">Main Page<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="instructions.cgi">Instructions<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="create_strategy.cgi">Create Strategy<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="beat_strategy.cgi">Beat Strategy<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="logout.cgi">Logout <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+EOP
+
 print "<h1>Instructions</h1><br>";
 print "<p>Here are explanations how all of this is going to work</p>";
 }else{
@@ -45,30 +78,45 @@ print<<EOP;
 <!DOCTYPE html>
 <html>
 <head><title>Rock paper scissor</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Rock Paper Scissors</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<h3>Here you can play rock paper scissor</h3>
-<form action="register_intro.cgi">
-<input type="submit" value="Sign Up">
-</form>
-<form action="login_intro.cgi">
-<input type="submit" value="Sign In">
-</form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.cgi">Main Page<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="instructions.cgi">Instructions<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="create_strategy.cgi">Create Strategy<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="beat_strategy.cgi">Beat Strategy<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
 
-<form action="game.cgi" method="post">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="login_intro.cgi">Sign in <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="register_intro.cgi">Sign up <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<!--br>
-Select your move:<br>
-<input type="radio" name="move" value="rock" checked="true"> rock </input><br>
-<input type="radio" name="move" value="paper"> paper </input><br>
-<input type="radio" name="move" value="scissors"> scissor </input><br>
+<h1>You must be logged in to see this</h1>
 
-<input type="submit" value="Lets fight">
-
-</form>
-
--->
 </body>
 </html>
 
