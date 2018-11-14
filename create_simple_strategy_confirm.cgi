@@ -35,8 +35,8 @@ print "<a href='logout.cgi'>logout</a><br>";
 print "<a href='instructions.cgi'>instructions</a><br>";
 print "<a href='create_strategy.cgi'>create strategy</a><br>";
 print "<a href='beat_strategy.cgi'>beat strategy</a><br>";
-print "<h1>create simple strategy confirm</h1><br>";
-print "<p>here you can go back to main page after creating new strategy</p>";
+print "<h1>create simple strategy confirmation</h1><br>";
+print "<p>new simple strategy created</p>";
 
 #loads all parameters
 #name, move1
@@ -54,19 +54,7 @@ $move10=param("move10");
 
 #10 moves
 #print them to check value for debugiing
-print("straegy name: $strategy_name<br>");
-print("move1: $move1<br>");
-print("move1: $move2<br>");
-print("move1: $move3<br>");
-print("move1: $move4<br>");
-print("move1: $move5<br>");
-print("move1: $move6<br>");
-print("move1: $move7<br>");
-print("move1: $move8<br>");
-print("move1: $move9<br>");
-print("move1: $move10<br>");
 $line_to_file = $strategy_name . " " . $move1 . " " . $move2 . " " . $move3 . " " . $move4 . " " . $move5 . " " . $move6 . " " . $move7 . " " . $move8 . " " . $move9 . " " . $move10 . "\n";
-print("suma: $line_to_file sdf");
 #opens file that is gonna hold name at beginning of line and all lines
 
 $strategies_file = "simple_strategies.txt";

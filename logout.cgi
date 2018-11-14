@@ -45,10 +45,7 @@ print start_html();
 if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
 
 
-print "$html_string<br>";
 print "logging out successful <br>";
-print "index array: $array_index linie wczytanie z cookies pliku juz po usunieciu: @lines <br>";
-print "id from cookie: $id_from_cookie num from cookie: $num_from_cookie<br>";
 print "<br>";
 print "<a href='index.cgi'>main page</a>";
 }else{

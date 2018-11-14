@@ -8,7 +8,6 @@ use Encode;
 
 sub calculate_move{
   my($op_mov, $player_move) = @_;
-  print("ruch przeciwnika $op_mov ruch moj $player_move<br>");
   if($op_mov eq $player_move){
     return 0.5;
   }elsif(($op_mov eq "r" && $player_move eq "s") || 
@@ -74,16 +73,6 @@ $move9= param("move9");
 $move10= param("move10");
 
 #print them to check value for debugiing
-print("straegy name: $strategy_name<br>");
-print("move1: $move1<br>");
-print("move1: $move2<br>");
-print("move1: $move3<br>");
-print("move1: $move4<br>");
-print("move1: $move5<br>");
-print("move1: $move6<br>");
-print("move1: $move7<br>");
-print("move1: $move8<br>");
-print("move1: $move9<br>");
 
 #open file with strategies and loads all line
 $strategies_file = "simple_strategies.txt";
@@ -95,15 +84,10 @@ close INS;
 my $m1, $m2, $m3, $m4, $m5, $m6, $m7, $m8, $m9, $m10;
 foreach $line(@lines){
   if(index($line, $strategy_name) != -1){
-    print("found strategy<br>");
 	chomp $line;
     ($niepotrzebne, $m1, $m2, $m3, $m4, $m5, $m6, $m7, $m8, $m9, $m10)=split / /,$line,11;
   }
 }
-print ("m1 k: $m1<br>");
-print ("m2 k: $m2<br>");
-print ("m3 k: $m3<br>");
-print ("oky, here i will calculate everything<br>");
 $total_points = 0;
 $total_points += calculate_move($m1, $move1);
 $total_points += calculate_move($m2, $move2);

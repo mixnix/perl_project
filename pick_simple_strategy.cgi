@@ -41,7 +41,6 @@ $simple_strategies = "simple_strategies.txt";
 open(INS, "$simple_strategies") || die "cant read $simple_strategies";
 @s_lines=<INS>;
 close INS;
-print("linie z pliku stregiowego: @s_lines<br>");
 print("<form action='play_simple_strategy.cgi' method='post'>");
 foreach $line(@s_lines){
    ($s_name, $the_rest)=split / /,$line,2;
