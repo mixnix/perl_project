@@ -65,11 +65,26 @@ print<<EOP;
     </div>
   </nav>
 
+<div class="container" style="padding:20px">
+<div class="jumbotron">
+  <h1 class="display-4">Instructions</h1>
+  <p class="lead">Here are explanations how all of this is going to work</p>
+  <hr class="my-4">
+</div>
+  <p>In create strategy you can pick what kind of strategy you want to create. 
+  For now only creation of simple strategy is possible. Simple strategy means that each 
+  move is predetermined by author. When creating it you decide what move to make in each 
+  turn. Rock, paper or scissors. After you create this strategy, then other players may
+  beat it in beat strategy secion. To beat strategy you pick name of strategy you want to beat 
+  and pick your moves for each turn. After that you will see your score but won't see what moves
+  opponent did, but you can try again and try to figure that out :) . </p>
+</div>
+
+
+
 
 EOP
 
-print "<h1>Instructions</h1><br>";
-print "<p>Here are explanations how all of this is going to work</p>";
 }else{
 
 

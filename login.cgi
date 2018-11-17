@@ -57,7 +57,7 @@ if($id eq "" or $password eq ""){
  die("username or password is empty, go back and try again");
 
 }
-$html_string = "";
+ $html_string = "password or username is incorrect, try again";
 
 foreach $line(@lines){
   @words_in_line = split / /, $line;
@@ -65,24 +65,20 @@ foreach $line(@lines){
   chomp $temporary_password;
   if ( $id eq $words_in_line[0] && $password eq $temporary_password){
     $html_string = "id and pass and password are correct";
-  }
-}
-
-
-#load all cookies from file
+    #load all cookies from file
 $cookie_file = "cookie.txt";
 if (!-e $cookie_file){
-	print header();
-	print h2("$cookie_file doesn't exist.");
-	exit;
+  print header();
+  print h2("$cookie_file doesn't exist.");
+  exit;
 }else{
     open(IN,"$cookie_file") || die "cant read $cookie_file";
-	while(<IN>){
+  while(<IN>){
        chomp;
-	   my($id_2,$num_2)=split/ /;
-	   $cookie_hash{$id_2}=$num_2;
-	}
-	close IN;
+     my($id_2,$num_2)=split/ /;
+     $cookie_hash{$id_2}=$num_2;
+  }
+  close IN;
 }
 
 
@@ -91,8 +87,8 @@ $cookie_id = int(rand(1000000));
 $cookie_hash{$id}=$cookie_id;
 
 $cookie = cookie(
-	-name => "random-name",
-	-value => "$cookie_id $id",
+  -name => "random-name",
+  -value => "$cookie_id $id",
 );
 
 #save cookie data to file
@@ -102,24 +98,51 @@ foreach $ida(sort keys %cookie_hash){
 }
 close OUT;
 
+  }
+}
+
+
+
+
 #sent cookie to user's computer
 print header(-cookie=>$cookie,-charset=>'utf-8');
 
 print<<EOP; 
 
-<head><title>Registration</title></head>
+<head><title>Login confirmation</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
 <body>
-<hr><h1>Registration</h1><hr>
-
-$html_string
 
 
 
 
-<hr>
-<form action="index.cgi">
- <input type="submit" value="Back to main page">
- </form>
+
+
+
+
+ <div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Login Confirmation</h1>
+        <p class="lead">
+
+EOP
+
+print ("$html_string");
+
+print<<EOP;
+
+
+        </p>
+         <hr class="my-4">
+      </div>
+      
+
+
+<form action="index.cgi" method="post">
+<button class="btn btn-success ml-2" type=”submit”>Back to main page</button>
+</form>
 </body>
 </html>
 

@@ -65,12 +65,17 @@ print<<EOP;
     </div>
   </nav>
 
+<div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Create simple strategy confirmation</h1>
+         <p class="lead">new simple strategy created</p>
+         <hr class="my-4">
+      </div>
+</div>
 
 EOP
 
 
-print "<h1>create simple strategy confirmation</h1><br>";
-print "<p>new simple strategy created</p>";
 
 #loads all parameters
 #name, move1

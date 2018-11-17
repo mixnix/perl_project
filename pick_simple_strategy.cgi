@@ -66,11 +66,16 @@ print<<EOP;
   </nav>
 
 
+
+<div class="container" style="padding:20px">
+   <div class="jumbotron">
+      <h1 class="display-4">Pick simple strategy</h1>
+      <p class="lead">Here you can pick simple strategy that you want to play against</p>
+      <hr class="my-4">
+   </div>
+
 EOP
 
-
-print "<h1>pick simple strategy</h1><br>";
-print "<p>here you can pick simple strategy that you want to play against</p>";
 $simple_strategies = "simple_strategies.txt";
 open(INS, "$simple_strategies") || die "cant read $simple_strategies";
 @s_lines=<INS>;
@@ -80,9 +85,20 @@ foreach $line(@s_lines){
    ($s_name, $the_rest)=split / /,$line,2;
    print("<input type='radio' name='s_name' value='$s_name'>$s_name</input><br>");
 }
-print("<input type='submit' value='submit'>");
+print("<input type='submit' class='btn btn-primary' value='submit'>");
 
 print("</form>");
+
+print<<EOP;
+
+</div>
+
+
+
+EOP
+
+
+
 
 }else{
 

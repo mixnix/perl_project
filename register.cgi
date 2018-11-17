@@ -67,21 +67,37 @@ print header();
 
 print<<EOP; 
 
-<head><title>Registration</title></head>
+<head><title>Registration</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
 <body>
-<hr><h1>Registration</h1><hr>
+<div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Registration Confirmation</h1>
+        <p class="lead">
+
 
 $html_string
 
+        </p>
+         <hr class="my-4">
+      </div>
 
-
-
-<hr>
-<form action="index.cgi">
- <input type="submit" value="Back to main page">
- </form>
+<form action="index.cgi" method="post">
+<button class="btn btn-success ml-2" type=”submit”>Back to main page</button>
+</form>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 EOP
 

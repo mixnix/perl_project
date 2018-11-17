@@ -66,76 +66,118 @@ print<<EOP;
   </nav>
 
 
+<div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Play simple strategy</h1>
+         <p class="lead">Here you play vs picked strategy</p>
+
 EOP
 
-
-print "<h1>here you play vs picked strategy</h1><br>";
 $s_name = param("s_name");
-print "<p>strategy name: $s_name</p>";
+print "<p class='lead'>$s_name</p>";
 
-#open file with strategies and loads all line
-#for through all lines and check for containing of straegy name
-#when you find good line then use split to split it into 10 different arugments
 
-#show form with 10 radio buttons that you have to pick move and then submit
-#create new page that shows you your score, there you will load strategy and check which round were win. 1 point for win 0.5 point for draw and 0 points for losing round
-
-#from there you can only go back
-#that shall be enough for today
-#after taht spend one day on implementing bootstrap and check how it looks
-#show it to professor on monday
-
-print("<form action='play_simple_strategy_confirm.cgi' method='post'>");
-print("Name<br>");
-print("<input type='text' name='s_name' value='$s_name' readonly><br>");
 print<<EOP;
 
 
-Move 1<br>
-<input type="radio" name="move1" value="r">Rock</input><br>
-<input type="radio" name="move1" value="p">Paper</input><br>
-<input type="radio" name="move1" value="s">Scissors</input><br>
-Move 2<br>
-<input type="radio" name="move2" value="r">Rock</input><br>
-<input type="radio" name="move2" value="p">Paper</input><br>
-<input type="radio" name="move2" value="s">Scissors</input><br>
-Move 3<br>
-<input type="radio" name="move3" value="r">Rock</input><br>
-<input type="radio" name="move3" value="p">Paper</input><br>
-<input type="radio" name="move3" value="s">Scissors</input><br>
-Move 4<br>
-<input type="radio" name="move4" value="r">Rock</input><br>
-<input type="radio" name="move4" value="p">Paper</input><br>
-<input type="radio" name="move4" value="s">Scissors</input><br>
-Move 5<br>
-<input type="radio" name="move5" value="r">Rock</input><br>
-<input type="radio" name="move5" value="p">Paper</input><br>
-<input type="radio" name="move5" value="s">Scissors</input><br>
-Move 6<br>
-<input type="radio" name="move6" value="r">Rock</input><br>
-<input type="radio" name="move6" value="p">Paper</input><br>
-<input type="radio" name="move6" value="s">Scissors</input><br>
-Move 7<br>
-<input type="radio" name="move7" value="r">Rock</input><br>
-<input type="radio" name="move7" value="p">Paper</input><br>
-<input type="radio" name="move7" value="s">Scissors</input><br>
-Move 8<br>
-<input type="radio" name="move8" value="r">Rock</input><br>
-<input type="radio" name="move8" value="p">Paper</input><br>
-<input type="radio" name="move8" value="s">Scissors</input><br>
-Move 9<br>
-<input type="radio" name="move9" value="r">Rock</input><br>
-<input type="radio" name="move9" value="p">Paper</input><br>
-<input type="radio" name="move9" value="s">Scissors</input><br>
-Move 10<br>
-<input type="radio" name="move10" value="r">Rock</input><br>
-<input type="radio" name="move10" value="p">Paper</input><br>
-<input type="radio" name="move10" value="s">Scissors</input><br>
-<input type="submit" value="submit">
-
-</form>
+         
+         <hr class="my-4">
+      </div>
+      <div class="form-check" style="padding:20px">
+      <form action="play_simple_strategy_confirm.cgi" method="post">
+         <div class="row" style="text-align:center" >
+            <div class="col-md-4" style="  float: none;
+  margin: 0 auto; ">
+         <div class="form-group">
+            <label for="Name">Strategy name</label>
 
 EOP
+
+print("<input type='text' class='form-control' name='s_name' value='$s_name' readonly>");
+
+print<<EOP;
+
+            
+         </div>
+                  </div>
+               </div>
+         <div class="row" >
+
+            <div class="col-md-4" style="text-align:center">      
+               Move 1</label><br>
+               <input type="radio" name="move1" value="r">Rock</input><br>
+               <input type="radio" name="move1" value="p">Paper</input><br>
+               <input type="radio" name="move1" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">      
+               Move 2<br>
+               <input type="radio" name="move2" value="r">Rock</input><br>
+               <input type="radio" name="move2" value="p">Paper</input><br>
+               <input type="radio" name="move2" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">      
+               Move 3<br>
+               <input type="radio" name="move3" value="r">Rock</input><br>
+               <input type="radio" name="move3" value="p">Paper</input><br>
+               <input type="radio" name="move3" value="s">Scissors</input><br>
+            </div>
+         </div>
+         <div class="row" >
+            <div class="col-md-4" style="text-align:center">      
+               Move 4<br>
+               <input type="radio" name="move4" value="r">Rock</input><br>
+               <input type="radio" name="move4" value="p">Paper</input><br>
+               <input type="radio" name="move4" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">      
+               Move 5<br>
+               <input type="radio" name="move5" value="r">Rock</input><br>
+               <input type="radio" name="move5" value="p">Paper</input><br>
+               <input type="radio" name="move5" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">      
+               Move 6<br>
+               <input type="radio" name="move6" value="r">Rock</input><br>
+               <input type="radio" name="move6" value="p">Paper</input><br>
+               <input type="radio" name="move6" value="s">Scissors</input><br>
+            </div>
+         </div>
+         <div class="row" >
+            <div class="col-md-4" style="text-align:center">      
+               Move 7<br>
+               <input type="radio" name="move7" value="r">Rock</input><br>
+               <input type="radio" name="move7" value="p">Paper</input><br>
+               <input type="radio" name="move7" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">      
+               Move 8<br>
+               <input type="radio" name="move8" value="r">Rock</input><br>
+               <input type="radio" name="move8" value="p">Paper</input><br>
+               <input type="radio" name="move8" value="s">Scissors</input><br>
+            </div>
+            <div class="col-md-4" style="text-align:center">
+               Move 9<br>
+               <input type="radio" name="move9" value="r">Rock</input><br>
+               <input type="radio" name="move9" value="p">Paper</input><br>
+               <input type="radio" name="move9" value="s">Scissors</input><br>
+            </div>
+         </div>
+        <div class="row" >
+                  <div class="col-md-4" style="  float: none;margin: 0 auto;text-align:center;">     
+                     Move 10<br>
+                     <input type="radio" name="move10" value="r">Rock</input><br>
+                     <input type="radio" name="move10" value="p">Paper</input><br>
+                     <input type="radio" name="move10" value="s">Scissors</input><br>
+                     <input class="btn btn-primary" type="submit" value="submit">
+                  </div>
+               </div>
+      </form>
+      </div>
+      </div>
+
+
+EOP
+
 
 }else{
 

@@ -26,7 +26,6 @@ $cookie= cookie('random-name');
 ($num_from_cookie, $id_from_cookie)=split / /,$cookie;
 if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
 
-
 print<<EOP;
 
 <!DOCTYPE html>
@@ -67,23 +66,38 @@ print<<EOP;
   </nav>
 
 
+
 <div class="container" style="padding:20px">
-<div class="jumbotron">
-  <h1 class="display-4">Create Strategy</h1>
-  <p class="lead">Here you can create strategies that other users will have to beat</p>
-  <hr class="my-4">
-  <a class="btn btn-primary btn-lg" href='create_simple_strategy.cgi' role="button">Create simple strategy</a>
+   <div class="jumbotron">
+      <h1 class="display-4">Pick simple strategy</h1>
+      <p class="lead">Here you can pick simple strategy that you want to play against</p>
+      <hr class="my-4">
+   </div>
+
+EOP
+
+
+print<<EOP;
+
 </div>
-</div>
+
 
 
 EOP
 
 
+$simple_strategies = "simple_strategies.txt";
+open(INS, "$simple_strategies") || die "cant read $simple_strategies";
+@s_lines=<INS>;
+close INS;
+print("<form action='play_simple_strategy.cgi' method='post'>");
+foreach $line(@s_lines){
+   ($s_name, $the_rest)=split / /,$line,2;
+   print("<input type='radio' name='s_name' value='$s_name'>$s_name</input><br>");
+}
+print("<input type='submit' value='submit'>");
 
-
-
-
+print("</form>");
 
 }else{
 

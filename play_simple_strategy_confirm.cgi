@@ -84,12 +84,28 @@ print<<EOP;
   </nav>
 
 
+<div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Play simple strategy results</h1>
+         <p class="lead">here you see how you did vs strategy</p>
+
+
+EOP
+
+$s_name = param("s_name");
+print "<p class='lead'>strategy name: $s_name</p>";
+
+print<<EOP;
+
+         <hr class="my-4">
+      </div>
+
+
 EOP
 
 
-print "<h1>here you see how you did vs strategy</h1><br>";
-$s_name = param("s_name");
-print "<p>strategy name: $s_name</p>";
+
+
 
 
 #loads all parameters
@@ -133,7 +149,11 @@ $total_points += calculate_move($m7, $move7);
 $total_points += calculate_move($m8, $move8);
 $total_points += calculate_move($m9, $move9);
 $total_points += calculate_move($m10, $move10);
-print("total points : $total_points");
+
+
+
+print("total points : $total_points (maximum is 10)");
+print("</div>");
 
 #for through all lines and check for containing of straegy name
 #when you find good line then use split to split it into 10 different arugments

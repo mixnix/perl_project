@@ -1,0 +1,11 @@
+.col-md-4 {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: 0;
+  font-size: 14px;
+  float: none;
+}
+
+input, label {
+	align-content: center;
+}

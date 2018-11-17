@@ -26,7 +26,6 @@ $cookie= cookie('random-name');
 ($num_from_cookie, $id_from_cookie)=split / /,$cookie;
 if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
 
-
 print<<EOP;
 
 <!DOCTYPE html>
@@ -66,23 +65,95 @@ print<<EOP;
     </div>
   </nav>
 
-
 <div class="container" style="padding:20px">
 <div class="jumbotron">
-  <h1 class="display-4">Create Strategy</h1>
-  <p class="lead">Here you can create strategies that other users will have to beat</p>
+  <h1 class="display-4">Create simple strategy</h1>
+  <p class="lead">Here you can create simple strategies</p>
   <hr class="my-4">
-  <a class="btn btn-primary btn-lg" href='create_simple_strategy.cgi' role="button">Create simple strategy</a>
 </div>
+   <div class="form-check" style="padding:20px">
+<form action="create_simple_strategy_confirm.cgi" method="post">
+
+ <div class="form-group">
+    <label for="Name">Example label</label>
+    <input type="text" class="form-control" id="Name" name="name" placeholder="Input name">
+  </div>
+
+  <div class="row">             <!-- responsive row has 12 columns by default -->
+    <div class="col-md-6">      <!-- uses 6 columns on medium and larger screens... -->
+      cosik1
+    </div>
+    <div class="col-md-6">      <!-- uses 12 columns on smaller than medium screens -->
+    cosik2
+    </div>
 </div>
+
+
+Move 1<br>
+<input type="radio" name="move1" value="r">Rock</input><br>
+<input type="radio" name="move1" value="p">Paper</input><br>
+<input type="radio" name="move1" value="s">Scissors</input><br>
+Move 2<br>
+<input type="radio" name="move2" value="r">Rock</input><br>
+<input type="radio" name="move2" value="p">Paper</input><br>
+<input type="radio" name="move2" value="s">Scissors</input><br>
+Move 3<br>
+<input type="radio" name="move3" value="r">Rock</input><br>
+<input type="radio" name="move3" value="p">Paper</input><br>
+<input type="radio" name="move3" value="s">Scissors</input><br>
+Move 4<br>
+<input type="radio" name="move4" value="r">Rock</input><br>
+<input type="radio" name="move4" value="p">Paper</input><br>
+<input type="radio" name="move4" value="s">Scissors</input><br>
+Move 5<br>
+<input type="radio" name="move5" value="r">Rock</input><br>
+<input type="radio" name="move5" value="p">Paper</input><br>
+<input type="radio" name="move5" value="s">Scissors</input><br>
+Move 6<br>
+<input type="radio" name="move6" value="r">Rock</input><br>
+<input type="radio" name="move6" value="p">Paper</input><br>
+<input type="radio" name="move6" value="s">Scissors</input><br>
+Move 7<br>
+<input type="radio" name="move7" value="r">Rock</input><br>
+<input type="radio" name="move7" value="p">Paper</input><br>
+<input type="radio" name="move7" value="s">Scissors</input><br>
+Move 8<br>
+<input type="radio" name="move8" value="r">Rock</input><br>
+<input type="radio" name="move8" value="p">Paper</input><br>
+<input type="radio" name="move8" value="s">Scissors</input><br>
+Move 9<br>
+<input type="radio" name="move9" value="r">Rock</input><br>
+<input type="radio" name="move9" value="p">Paper</input><br>
+<input type="radio" name="move9" value="s">Scissors</input><br>
+Move 10<br>
+<input type="radio" name="move10" value="r">Rock</input><br>
+<input type="radio" name="move10" value="p">Paper</input><br>
+<input type="radio" name="move10" value="s">Scissors</input><br>
+<input type="submit" value="submit">
+
+</form>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
 
 
 EOP
 
 
 
+print<<EOP;
 
 
+
+EOP
 
 
 }else{

@@ -64,8 +64,17 @@ print<<EOP;
       </ul>
     </div>
   </nav>
+<div class="container" style="padding:20px">
+  <!-- Content here -->
+  <div class="jumbotron">
+  <h1 class="display-4">This is main page</h1>
+  <p class="lead">Rock paper scissors where you can beat strategies created by other players</p>
+  <hr class="my-4">
+</div>
 
-<h1>This is main page</h1>
+</div>
+
+
   
 </body>
 </html>

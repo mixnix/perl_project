@@ -41,21 +41,28 @@ print "<a href='index.cgi'>main page</a>";
 
 print<<EOP;
 
+<head><title>RPS login</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+
 <body>
-<h3>RPS register form</h3>
+<div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Registration Page</h1>
+         <hr class="my-4">
+      </div>
+      
 
+<h2>Register</h2>
 <form action="register.cgi" method="post">
-
-
-<br>
-userID
-<input type="text" name="id"></input><br>
-password
-<input type="password" name="password"></input><br>
-<br>
-<input type="submit" value="submit">
-
+<p><label for="id_username">Username:</label> <input type="text" name="id" autofocus required id="id_username"></p>
+<p><label for="id_password">Password:</label> <input type="password" name="password" required id="id_password"></p>
+<button class="btn btn-success ml-2" type=”submit”>Register</button>
 </form>
+
+
 </body>
 </html>
 

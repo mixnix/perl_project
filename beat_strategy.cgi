@@ -65,11 +65,17 @@ print<<EOP;
     </div>
   </nav>
 
+<div class="container" style="padding:20px">
+<div class="jumbotron">
+  <h1 class="display-4">Beat Strategy</h1>
+  <p class="lead">Here you can beat strategies that other users created</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href='pick_simple_strategy.cgi' role="button">Beat simple strategy</a>
+</div>
+</div>
 
 EOP
 
-print "<p>Hello, here you can beat strategies that other users created</p><br>";
-print "<a href='pick_simple_strategy.cgi'>beat simple strategy</a><br>";
 }else{
 
 

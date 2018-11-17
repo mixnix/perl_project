@@ -44,10 +44,32 @@ print start_html();
 
 if ($cookie && $cookie_hash{$id_from_cookie} && ($cookie_hash{$id_from_cookie}==$num_from_cookie)){
 
+print<<EOP;
 
-print "logging out successful <br>";
-print "<br>";
-print "<a href='index.cgi'>main page</a>";
+<head><title>Logout confirmation</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>s
+ <div class="container" style="padding:20px">
+      <div class="jumbotron">
+         <h1 class="display-4">Logout Confirmation</h1>
+        <p class="lead">
+logging out successfull
+        </p>
+         <hr class="my-4">
+      </div>
+
+<form action="index.cgi" method="post">
+<button class="btn btn-success ml-2" type=”submit”>Back to main page</button>
+</form>
+</body>
+</html>
+
+
+EOP
+
 }else{
 
 print "error";
